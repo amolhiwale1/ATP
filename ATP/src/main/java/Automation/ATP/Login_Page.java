@@ -21,5 +21,4 @@ public class Login_Page {
 	@FindBy(css = "#input-payment-firstname")
 	public WebElement firstName;
 	
-
 }

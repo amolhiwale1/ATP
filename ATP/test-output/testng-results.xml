@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-06-08T13:51:51 IST" name="Default suite" finished-at="2023-06-08T13:52:06 IST" duration-ms="15052">
+    <groups>
+    </groups>
+    <test started-at="2023-06-08T13:51:51 IST" name="Default test" finished-at="2023-06-08T13:52:06 IST" duration-ms="15052">
+      <class name="ATP.Register_User">
+        <test-method is-config="true" signature="setUp(org.testng.ITestContext)[pri:0, instance:ATP.Register_User@71ba6d4e]" started-at="2023-06-08T13:51:51 IST" name="setUp" finished-at="2023-06-08T13:51:56 IST" duration-ms="5453" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@376c7d7d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="register()[pri:0, instance:ATP.Register_User@71ba6d4e]" started-at="2023-06-08T13:51:56 IST" name="register" finished-at="2023-06-08T13:52:03 IST" duration-ms="6969" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- register -->
+        <test-method signature="loginUser()[pri:0, instance:ATP.Register_User@71ba6d4e]" started-at="2023-06-08T13:52:03 IST" name="loginUser" finished-at="2023-06-08T13:52:06 IST" depends-on-methods="ATP.Register_User.register" duration-ms="2243" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginUser -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ATP.Register_User@71ba6d4e]" started-at="2023-06-08T13:52:06 IST" name="tearDown" finished-at="2023-06-08T13:52:06 IST" duration-ms="353" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- ATP.Register_User -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

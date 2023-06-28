@@ -19,6 +19,9 @@ public class Page {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	@FindBy(xpath = "//span[normalize-space()='Home']")
+	public WebElement home;
 
 	@FindBy(xpath = "//img[@alt='Iphone 11 pro max']")
 	public WebElement product;
@@ -26,6 +29,9 @@ public class Page {
 	@FindBy(xpath = "(//button[@title='Add to Cart'][normalize-space()='Add to Cart'])[2]")
 	public WebElement addToCart;
 
+	@FindBy(xpath = "//a[normalize-space()='View Cart']")
+	public WebElement viewCart;
+	
 	@FindBy(xpath = "//a[@class='btn btn-secondary btn-block']")
 	public WebElement checkout;
 
@@ -90,18 +96,31 @@ public class Page {
 
 	}
 	
+	public void home() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement Home = wait.until(ExpectedConditions.elementToBeClickable(home));
+		Home.click();
+	}
+	
 	public void selectProduct() {
 		product.click();
 	}
+	
 
 	public void addToCart() {
 		addToCart.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-
+	}
+	
+	public void viewCart() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebElement vCart = wait.until(ExpectedConditions.elementToBeClickable(viewCart));
+		vCart.click();
 	}
 
 	public void checkout() {
-		checkout.click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebElement cout = wait.until(ExpectedConditions.elementToBeClickable(checkout));
+		cout.click();
 	}
 	
 	public void selectCountry(String countryName) {

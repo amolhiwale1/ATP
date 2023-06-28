@@ -12,7 +12,7 @@ import Automation.ATP.Login_Page;
 import Automation.ATP.Page;
 import Automation.ATP.base;
 
-public class Product_To_Cart extends base {
+public class Cart_Each_Country extends base {
 
 	public WebDriver driver;
 	Cart cart;
@@ -22,52 +22,29 @@ public class Product_To_Cart extends base {
 	@BeforeClass
 	public void setUp(ITestContext context) throws IOException {
 
-		driver = initialise("default");
+		driver = initialise("default");//chromeoption default
 		context.setAttribute("WebDriver", driver);
 		cart = new Cart(driver);
 		login = new Login_Page(driver);
 		page = new Page(driver);
 	}
 
-	@Test(priority = 0, enabled = true, description = "Adding the product to the cart")
-	public void addProductToCart() throws IOException, InterruptedException{
-		
-		//login
-		login.loginUser();
-		
-		//select product
-		page.home();
+	@Test(priority = 0, enabled = true, description = "Checking the price for each country")
+	public void addProductToCart() throws IOException, InterruptedException {
+
+		// select product
 		page.selectProduct();
-		
-		//add to cart
+
+		// add to cart
 		page.addToCart();
-		
-		//view cart
+
+		// view cart
 		page.viewCart();
-		
-		//estimate shipping and taxes
+
+		// estimate shipping and taxes
 		cart.estimateTaxes();
-		
-		//select country
-		cart.selectCountry(3);
-		
-		//pin code
-		cart.postCode();
-		
-		//select state
-		cart.selectState(5);
-		
-		//get quotes
-		cart.getQuote();
-		
-		//apply shipping
-		cart.applyShipping();
-		
-		//check prices
-		cart.finalPrice();
-		
-		
 
+		// check for each country
+		cart.checkPriceForEachCountry();
 	}
-
 }

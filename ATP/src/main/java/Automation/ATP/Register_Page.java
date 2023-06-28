@@ -141,12 +141,14 @@ public class Register_Page {
 		logOut.click();
 	}
 
-	public void login() throws IOException {
-		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//config.properties");
+	public void login() throws IOException{
+		FileInputStream fis;
+		fis = new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//config.properties");
 		prop.load(fis);
 		email.sendKeys(prop.getProperty("email"));
 		password.sendKeys(passwords);
 		login.click();
+		
 	}
 
 }

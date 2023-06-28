@@ -19,12 +19,12 @@ public class Register_User extends base {
 
 	@BeforeClass
 	public void setUp(ITestContext context) throws IOException {
-		driver = initialise();
+		driver = initialise("default");
 		context.setAttribute("WebDriver", driver);
 		register = new Register_Page(driver);
 	}
 
-	@Test
+	@Test(priority = 0, enabled = true, description = "User Registration")
 	public void register() {
 
 		// Go to my acccount page
@@ -49,7 +49,7 @@ public class Register_User extends base {
 
 	}
 
-	@Test(dependsOnMethods = { "register" })
+	@Test(dependsOnMethods = { "register" }, enabled = true, description = "User Login")
 	public void loginUser() throws IOException {
 
 		// Go to my acccount page

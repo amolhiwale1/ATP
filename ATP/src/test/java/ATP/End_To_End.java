@@ -21,14 +21,14 @@ public class End_To_End extends base {
 	@BeforeClass
 	public void setUp(ITestContext context) throws IOException {
 
-		driver = initialise();
+		driver = initialise("default");
 		context.setAttribute("WebDriver", driver);
 		page = new Page(driver);
 		
 
 	}
 	
-	@Test(priority = 0, enabled = true)
+	@Test(priority = 0, enabled = true, description = "The end to end flow from regitering the user to checkout the product")
 	public void addProduct() throws InterruptedException {
 		
 		page.selectProduct();

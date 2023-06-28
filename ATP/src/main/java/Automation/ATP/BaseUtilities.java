@@ -39,5 +39,9 @@ public class BaseUtilities {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", element);
 
 	}
+	
+	public void pause() throws InterruptedException {
+		Thread.sleep(4);
+	}
 
 }

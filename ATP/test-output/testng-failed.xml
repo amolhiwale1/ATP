@@ -3,14 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ATP.Register_User">
+      <class name="ATP.Cart_Each_Country">
         <methods>
-          <include name="loginUser"/>
-          <include name="tearDown"/>
-          <include name="register"/>
+          <include name="addProductToCart"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- ATP.Register_User -->
+      </class> <!-- ATP.Cart_Each_Country -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

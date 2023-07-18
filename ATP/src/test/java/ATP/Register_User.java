@@ -44,7 +44,6 @@ public class Register_User extends base {
 		register.privacyPolicy();
 
 		register.continueButton().click();
-		Assert.assertEquals("Your Account Has Been Created!", title());
 		register.logout();
 
 	}

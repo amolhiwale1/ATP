@@ -3,6 +3,7 @@ package ATP;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -34,17 +35,22 @@ public class Cart_Each_Country extends base {
 
 		// select product
 		page.selectProduct();
+		Assert.assertEquals("iPhone", title());
 
 		// add to cart
 		page.addToCart();
+		Assert.assertEquals("iPhone", title());
 
 		// view cart
 		page.viewCart();
+		Assert.assertEquals("Shopping Cart", title());
 
 		// estimate shipping and taxes
 		cart.estimateTaxes();
+		Assert.assertEquals("Shopping Cart", title());
 
 		// check for each country
 		cart.checkPriceForEachCountry();
+		
 	}
 }

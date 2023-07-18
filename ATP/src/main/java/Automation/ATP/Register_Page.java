@@ -101,7 +101,7 @@ public class Register_Page {
 	public String emailID() throws IOException {
 		FileOutputStream out = new FileOutputStream(System.getProperty("user.dir")+"//src//main//resources//config.properties");
 
-		String mailID = page.getSaltString() + "@nuvolo.com";
+		String mailID = page.getSaltString();
 		prop.setProperty("email", mailID);
 		prop.store(out, null);
 		return mailID;

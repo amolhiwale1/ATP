@@ -14,9 +14,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Page {
 
 	WebDriver driver;
+	BaseUtilities util;
 
 	public Page(WebDriver driver) {
 		this.driver = driver;
+		util = new BaseUtilities(driver);
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -83,6 +85,9 @@ public class Page {
 	@FindBy(xpath = "//button[@id='button-confirm']")
 	public WebElement confirmOrder;
 	
+	@FindBy(xpath = "//h5[normalize-space()='Use Gift Certificate']")
+	public WebElement giftCertificate;
+	
 	public String getSaltString() {
 		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		StringBuilder salt = new StringBuilder();
@@ -92,7 +97,7 @@ public class Page {
 			salt.append(SALTCHARS.charAt(index));
 		}
 		String saltStr = salt.toString();
-		return saltStr;
+		return saltStr+"@nuvolo.com";
 
 	}
 	
@@ -131,8 +136,10 @@ public class Page {
 	}
 	
 	public void selectState(String stateName) {
-		Select select = new Select(state);
-		select.selectByVisibleText(stateName);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebElement stateOption = wait.until(ExpectedConditions.visibilityOf(state));
+		Select select = new Select(stateOption);
+		select.selectByIndex(Integer.parseInt(stateName));
 	}
 	
 	public void confirmOrder() throws InterruptedException {
@@ -153,36 +160,54 @@ public class Page {
 		termsConditionsButton.click();
 
 	}
+	
+	public void firstName(String name) {
+		firstName.sendKeys(name);
+	}
+	
+	public void lastName(String name) {
+		lastName.sendKeys(name);
+	}
+	
+	public void generateEmail(String eMail) {
+		 email.sendKeys(eMail);
+	}
+	
+	public void telePhone(String number) {
+		telePhone.sendKeys(number);
+	}
 
-	public void fillTheForm() {
-		//First name and Last name
-		firstName.sendKeys("Amol");
-		lastName.sendKeys("Hiwale");
-
-		//Email and Telephone
-		email.sendKeys(getSaltString()+"@nuvolo.com");
-		telePhone.sendKeys("987654543210");
+	public void enterPassword(String passwords) {
+		password.sendKeys(passwords);
 		
-		//Password
-		password.sendKeys("Nuvolo123");
-		confirmPassword.sendKeys("Nuvolo123");
-		
-		//Billing Address
-		company.sendKeys("Nuvolo Technologies");
-		address1.sendKeys("Pune, Maharashtra, India");
-		city.sendKeys("Pune");
-		postCode.sendKeys("411045");
-		
-		//Country and State
-		selectCountry("India");
-		selectState("Maharashtra");
-		
-		//Selecting privacy policy and terms condition
+	}
+	
+	public void enterConfirmPassword(String passwords) {
+		confirmPassword.sendKeys(passwords);
+	}
+	
+	public void companyName(String companyName) {
+		company.sendKeys(companyName);
+	}
+	
+	public void address(String address) {
+		address1.sendKeys(address);//"Pune, Maharashtra, India"
+	}
+	
+	public void cityName(String cityName) {
+		city.sendKeys(cityName);
+	}
+	
+	public void postCode(String code) {
+		postCode.sendKeys(code);
+	}
+	
+	public void clickPrivacyPolicy() {
 		privacyPolicy.click();
-		termsCondition();
-		
-		//Saving the fprm
-		saveButton();
+	}
+	
+	public void giftCertificate() {
+		util.scrollToElement(giftCertificate);
 	}
 
 }
